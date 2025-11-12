@@ -118,80 +118,31 @@ const counterObserver = new IntersectionObserver(
 );
 counters.forEach((el) => counterObserver.observe(el));
 
-// Filter projects + tilt interaction
-const filterButtons = document.querySelectorAll('.filters .chip');
-const projectGrid = document.querySelector('.project-grid');
-const projectCards = projectGrid ? [...projectGrid.querySelectorAll('.project-card')] : [];
-const projectPrev = document.getElementById('projectPrev');
-const projectNext = document.getElementById('projectNext');
-const cardsPerPage = 6;
-let activeProjectFilter = 'all';
-let projectPage = 0;
-
-const getFilteredCards = () =>
-  projectCards.filter((card) => activeProjectFilter === 'all' || card.dataset.cat === activeProjectFilter);
-
-const renderProjectPage = () => {
-  if (!projectGrid) return;
-  const filtered = getFilteredCards();
-  const totalPages = Math.max(1, Math.ceil(filtered.length / cardsPerPage));
-  projectPage = Math.min(projectPage, totalPages - 1);
-  projectGrid.classList.add('transitioning');
-  projectCards.forEach((card) => {
-    card.hidden = true;
-  });
-  const start = projectPage * cardsPerPage;
-  filtered.slice(start, start + cardsPerPage).forEach((card) => {
-    card.hidden = false;
-  });
-  projectPrev?.toggleAttribute('disabled', projectPage === 0);
-  projectNext?.toggleAttribute('disabled', projectPage >= totalPages - 1);
-  setTimeout(() => projectGrid.classList.remove('transitioning'), 200);
-};
-
-filterButtons.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    filterButtons.forEach((b) => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeProjectFilter = btn.dataset.filter || 'all';
-    projectPage = 0;
-    renderProjectPage();
-  });
-});
-
-projectPrev?.addEventListener('click', () => {
-  if (projectPage === 0) return;
-  projectPage -= 1;
-  renderProjectPage();
-});
-projectNext?.addEventListener('click', () => {
-  const totalPages = Math.max(1, Math.ceil(getFilteredCards().length / cardsPerPage));
-  if (projectPage >= totalPages - 1) return;
-  projectPage += 1;
-  renderProjectPage();
-});
-
-renderProjectPage();
-
-if (window.matchMedia('(pointer: fine)').matches) {
-  projectCards.forEach((card) => {
-    const resetTilt = () => {
-      card.style.setProperty('--tiltX', '0deg');
-      card.style.setProperty('--tiltY', '0deg');
-    };
-    card.addEventListener('pointermove', (event) => {
-      const rect = card.getBoundingClientRect();
-      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 10;
-      const y = ((event.clientY - rect.top) / rect.height - 0.5) * -10;
-      card.style.setProperty('--tiltX', `${x.toFixed(2)}deg`);
-      card.style.setProperty('--tiltY', `${y.toFixed(2)}deg`);
-    });
-    card.addEventListener('pointerleave', resetTilt);
-    card.addEventListener('pointerup', resetTilt);
-  });
+// Hero parallax
+const heroSection = document.getElementById('hero');
+const heroCard = document.querySelector('.hero-art .card');
+const heroCopy = document.querySelector('.hero-copy');
+const heroParallaxEnabled = window.matchMedia('(pointer: fine)').matches;
+if (heroSection && heroCard && heroCopy && heroParallaxEnabled) {
+  const parallax = (event) => {
+    const rect = heroSection.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    heroCard.style.setProperty('--hero-card-x', `${x * 16}px`);
+    heroCard.style.setProperty('--hero-card-y', `${y * 12}px`);
+    heroCopy.style.setProperty('--hero-copy-x', `${x * -10}px`);
+    heroCopy.style.setProperty('--hero-copy-y', `${y * -6}px`);
+  };
+  const reset = () => {
+    heroCard.style.setProperty('--hero-card-x', '0px');
+    heroCard.style.setProperty('--hero-card-y', '0px');
+    heroCopy.style.setProperty('--hero-copy-x', '0px');
+    heroCopy.style.setProperty('--hero-copy-y', '0px');
+  };
+  heroSection.addEventListener('pointermove', parallax);
+  heroSection.addEventListener('pointerleave', reset);
 }
 
-// Project modal
 const projectCases = {
   sun: {
     title: 'Sun Nha Trang — KV Launch',
@@ -203,7 +154,7 @@ const projectCases = {
   },
   latien: {
     title: 'La Tiên Villa — Brochure Wabi‑Sabi',
-    desc: 'Brochure Wabi-Sabi kết hợp chất liệu in cao cấp, layout tinh gọn và hình ảnh giàu cảm xúc.'
+    desc: 'Brochure phong cách Wabi-Sabi kết hợp chất liệu in cao cấp, layout tinh gọn và hình ảnh giàu cảm xúc.'
   },
   recruitment: {
     title: 'Recruitment — KOL/KOC BĐS',
@@ -234,6 +185,82 @@ const projectCases = {
     desc: 'Sales kit đa kênh cho Metro Skyline: profile, deck và key visual cho đội ngũ kinh doanh.'
   }
 };
+
+const filterButtons = document.querySelectorAll('.filters .chip');
+const pointerFine = window.matchMedia('(pointer: fine)').matches;
+const projectGrid = document.querySelector('.project-grid');
+const projectPrev = document.getElementById('projectPrev');
+const projectNext = document.getElementById('projectNext');
+const projectCards = projectGrid ? [...projectGrid.querySelectorAll('.project-card')] : [];
+const cardsPerPage = 6;
+let activeProjectFilter = 'all';
+let projectPage = 0;
+
+filterButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    filterButtons.forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeProjectFilter = btn.dataset.filter || 'all';
+    projectPage = 0;
+    renderProjectPage();
+  });
+});
+
+const getFilteredCards = () =>
+  projectCards.filter((card) => activeProjectFilter === 'all' || card.dataset.cat === activeProjectFilter);
+
+const renderProjectPage = () => {
+  if (!projectGrid || !projectCards.length) return;
+  const filtered = getFilteredCards();
+  const totalPages = Math.max(1, Math.ceil(filtered.length / cardsPerPage));
+  projectPage = Math.min(projectPage, totalPages - 1);
+  projectGrid.classList.add('transitioning');
+  projectCards.forEach((card) => {
+    card.hidden = true;
+  });
+  const start = projectPage * cardsPerPage;
+  filtered.slice(start, start + cardsPerPage).forEach((card) => {
+    card.hidden = false;
+  });
+  const showNav = totalPages > 1;
+  [projectPrev, projectNext].forEach((btn) => btn?.classList.toggle('hidden', !showNav));
+  projectPrev?.toggleAttribute('disabled', projectPage === 0);
+  projectNext?.toggleAttribute('disabled', projectPage >= totalPages - 1);
+  setTimeout(() => projectGrid.classList.remove('transitioning'), 180);
+};
+
+projectPrev?.addEventListener('click', () => {
+  if (projectPage === 0) return;
+  projectPage -= 1;
+  renderProjectPage();
+});
+
+projectNext?.addEventListener('click', () => {
+  const totalPages = Math.max(1, Math.ceil(getFilteredCards().length / cardsPerPage));
+  if (projectPage >= totalPages - 1) return;
+  projectPage += 1;
+  renderProjectPage();
+});
+
+renderProjectPage();
+
+if (window.matchMedia('(pointer: fine)').matches) {
+  projectCards.forEach((card) => {
+    const resetTilt = () => {
+      card.style.setProperty('--tiltX', '0deg');
+      card.style.setProperty('--tiltY', '0deg');
+    };
+    card.addEventListener('pointermove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 10;
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * -10;
+      card.style.setProperty('--tiltX', `${x.toFixed(2)}deg`);
+      card.style.setProperty('--tiltY', `${y.toFixed(2)}deg`);
+    });
+    card.addEventListener('pointerleave', resetTilt);
+    card.addEventListener('pointerup', resetTilt);
+  });
+}
 
 const modal = document.getElementById('modal');
 const modalTitle = document.getElementById('modalTitle');
@@ -280,15 +307,15 @@ const closeModal = () => {
   lastFocusedElement?.focus();
 };
 
-document.querySelectorAll('.p-view').forEach((btn) => {
-  btn.addEventListener('click', (event) => {
-    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    if (!modal) return;
-    const id = btn.dataset.case;
-    if (!id) return;
-    event.preventDefault();
-    openModal(id, btn);
-  });
+document.addEventListener('click', (event) => {
+  const btn = event.target.closest('.p-view');
+  if (!btn) return;
+  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  if (!modal) return;
+  const id = btn.dataset.case;
+  if (!id) return;
+  event.preventDefault();
+  openModal(id, btn);
 });
 
 modal?.addEventListener('click', (event) => {
@@ -325,6 +352,7 @@ if (sliderEl) {
   const nextBtn = sliderEl.querySelector('.slider-next');
   const prevBtn = sliderEl.querySelector('.slider-prev');
   const progressSpan = sliderEl.querySelector('.slider-progress span');
+  const sliderThemes = ['violet', 'teal', 'rose'];
   let sliderIndex = slides.findIndex((slide) => slide.classList.contains('active'));
   if (sliderIndex < 0) sliderIndex = 0;
   let autoTimer = null;
@@ -342,6 +370,7 @@ if (sliderEl) {
       const progress = slides.length ? ((sliderIndex + 1) / slides.length) * 100 : 0;
       progressSpan.style.width = `${progress}%`;
     }
+    sliderEl.dataset.theme = sliderThemes[sliderIndex % sliderThemes.length];
   };
 
   const nextSlide = () => {
