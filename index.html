@@ -36,54 +36,55 @@
 </button>
 <ul class="nav-menu" id="navMenu">
 <li>
-<a href="#about">
+<a data-i18n="nav.about" href="#about">
         Giới thiệu
        </a>
 </li>
 <li>
-<a href="#projects">
+<a data-i18n="nav.projects" href="#projects">
         Dự án
        </a>
 </li>
 <li>
-<a href="#services">
+<a data-i18n="nav.services" href="#services">
         Dịch vụ
        </a>
 </li>
 <li>
-<a href="#skills">
+<a data-i18n="nav.skills" href="#skills">
         Kỹ năng
        </a>
 </li>
 <li>
-<a href="#testimonials">
+<a data-i18n="nav.testimonials" href="#testimonials">
         Khách hàng
        </a>
 </li>
 <li>
-<a href="#contact">
+<a data-i18n="nav.contact" href="#contact">
         Liên hệ
        </a>
 </li>
-<li>
-<button aria-label="Đổi chế độ sáng/tối" class="btn btn-ghost small" id="themeToggle">
+    <li>
+     <button aria-label="Đổi chế độ sáng/tối" class="btn btn-ghost small" data-i18n-attr="aria-label:nav.themeToggle" id="themeToggle">
         🌓
        </button>
-</li>
-<li>
-<div class="palette">
-<button class="swatch" data-accent="violet" title="Violet">
-</button>
-<button class="swatch" data-accent="orange" title="Orange">
-</button>
-<button class="swatch" data-accent="emerald" title="Emerald">
-</button>
-</div>
-</li>
-</ul>
-</nav>
-</div>
+    </li>
+    <li>
+     <div aria-label="Language switcher" class="lang-switch" role="group">
+      <button class="lang-btn active" data-lang="vi" type="button">
+       VI
+      </button>
+      <button class="lang-btn" data-lang="en" type="button">
+       EN
+      </button>
+     </div>
+    </li>
+   </ul>
+  </nav>
+ </div>
 </header>
+<main>
 <section class="section hero" id="hero">
 <div aria-hidden="true" class="hero-backdrop">
 <span class="orb orb-1">
@@ -121,26 +122,29 @@
 </div>
 <div class="container grid-2">
 <div class="hero-copy reveal-up">
-<p class="eyebrow">
+<div class="hero-text">
+<p class="eyebrow" data-i18n="hero.greeting">
       Xin chào, tôi là
      </p>
 <h1 class="headline">
       Minh Thuyết
      </h1>
-<p class="subhead">
+<p class="subhead" data-i18n="hero.subhead">
       Thiết kế đồ hoạ BĐS • Brand Identity • Social Ads
      </p>
-<p class="lede typewriter" data-text="Tôi biến insight thành thiết kế có hiệu quả kinh doanh — tập trung lĩnh vực bất động sản, từ nhận diện thương hiệu, bộ ấn phẩm đến chiến dịch social đồng bộ.">
+<p class="lede typewriter" data-i18n-typewriter="hero.typewriter" data-text="Tôi biến insight thành thiết kế có hiệu quả kinh doanh — tập trung lĩnh vực bất động sản, từ nhận diện thương hiệu, bộ ấn phẩm đến chiến dịch social đồng bộ.">
 <span class="typewriter-text">
 </span>
 <span aria-hidden="true" class="typewriter-caret">
 </span>
 </p>
+</div>
+<div class="hero-actions">
 <div class="cta-row">
-<a class="btn" href="#" id="downloadCV">
+<a class="btn" data-i18n="hero.ctaPrimary" href="#" id="downloadCV">
        Tải CV
       </a>
-<a class="btn btn-ghost" href="#projects">
+<a class="btn btn-ghost" data-i18n="hero.ctaSecondary" href="#projects">
        Xem Dự Án
       </a>
 </div>
@@ -165,6 +169,7 @@
 </a>
 </div>
 </div>
+</div>
 <div class="hero-art reveal-up">
 <div class="card holo">
 <div class="glow">
@@ -184,16 +189,16 @@
 </div>
 </div>
 </div>
-<a aria-label="Cuộn xuống" class="scroll-down" href="#about">
+<a aria-label="Cuộn xuống" class="scroll-down" data-i18n-attr="aria-label:hero.scroll" href="#about">
     ▾
    </a>
 </section>
 <section class="section" id="about">
 <div class="container">
-<h2 class="section-title reveal-up">
+<h2 class="section-title reveal-up" data-i18n="about.title">
      Kinh nghiệm
     </h2>
-<p class="section-lead reveal-up">
+<p class="section-lead reveal-up" data-i18n="about.lead">
      Hơn 3 năm thiết kế trong lĩnh vực BĐS &amp; thương hiệu. Kết hợp tư duy chiến lược,
         gu thẩm mỹ hiện đại, sang trọng và workflow tối ưu để tạo ra sản phẩm hoàn thiện, đúng hạn, đúng mục tiêu.
     </p>
@@ -202,14 +207,14 @@
 <div class="t-dot">
 </div>
 <div class="t-content">
-<h3>
+<h3 data-i18n="timeline.1.title">
         11/2024 – 2025 · Công ty CP Tư vấn &amp; Đầu tư BĐS An Khang
        </h3>
 <ul class="t-resp">
-<li>
+<li data-i18n="timeline.1.item1">
         Design xây dựng bộ nhận diện, KV chiến dịch cho danh mục dự án cao cấp.
         </li>
-<li>
+<li data-i18n="timeline.1.item2">
          Điều phối sản phẩm digital &amp; POSM đồng bộ giữa team in-house và agency đối tác.
         </li>
 </ul>
@@ -219,14 +224,14 @@
 <div class="t-dot">
 </div>
 <div class="t-content">
-<h3>
+<h3 data-i18n="timeline.2.title">
         05/2024 – 10/2024 · Công ty TNHH Địa óc Nhà Đại Phát
        </h3>
 <ul class="t-resp">
-<li>
+<li data-i18n="timeline.2.item1">
          Thiết kế bộ sản phẩm truyền thông cho dự án BĐS hạng sang, chuẩn hoá guideline visual.
         </li>
-<li>
+<li data-i18n="timeline.2.item2">
          Thực hiện social media post, motion short-form và chỉnh sửa video giới thiệu dự án.
         </li>
 </ul>
@@ -236,14 +241,14 @@
 <div class="t-dot">
 </div>
 <div class="t-content">
-<h3>
+<h3 data-i18n="timeline.3.title">
         02/2024 – 05/2024 · Freelance Designer
        </h3>
 <ul class="t-resp">
-<li>
+<li data-i18n="timeline.3.item1">
          Thiết kế social media post theo KPI chiến dịch.
         </li>
-<li>
+<li data-i18n="timeline.3.item2">
          Phát triển brochure, banner, poster &amp; các ấn phẩm in ấn cho đối tác BĐS.
         </li>
 </ul>
@@ -253,14 +258,14 @@
 <div class="t-dot">
 </div>
 <div class="t-content">
-<h3>
+<h3 data-i18n="timeline.4.title">
         10/2022 – 01/2023 · Intern Designer — Toppion Coaching &amp; Consulting Group
        </h3>
 <ul class="t-resp">
-<li>
+<li data-i18n="timeline.4.item1">
          Thiết kế cover cho sách/ấn phẩm đào tạo, social post và tài liệu nội bộ.
         </li>
-<li>
+<li data-i18n="timeline.4.item2">
          Hỗ trợ sản xuất brochure, standee, vật phẩm workshop.
         </li>
 </ul>
@@ -270,14 +275,14 @@
 <div class="t-dot">
 </div>
 <div class="t-content">
-<h3>
+<h3 data-i18n="timeline.5.title">
         02/2022 – 09/2022 · Part-time Designer — Công ty TNHH Hoàng Đức Hải
        </h3>
 <ul class="t-resp">
-<li>
+<li data-i18n="timeline.5.item1">
          Thực hiện social media post theo chiến dịch tuần.
         </li>
-<li>
+<li data-i18n="timeline.5.item2">
          Thiết kế hình ảnh website, banner landing, tối ưu trải nghiệm trực tuyến.
         </li>
 </ul>
@@ -289,7 +294,7 @@
 <div class="m-num" data-count="120">
        0
       </div>
-<div class="m-label">
+<div class="m-label" data-i18n="metrics.projects">
        Dự án hoàn thành
       </div>
 </div>
@@ -297,7 +302,7 @@
 <div class="m-num" data-count="60">
        0
       </div>
-<div class="m-label">
+<div class="m-label" data-i18n="metrics.brands">
        Thương hiệu hợp tác
       </div>
 </div>
@@ -305,7 +310,7 @@
 <div class="m-num" data-count="15">
        0
       </div>
-<div class="m-label">
+<div class="m-label" data-i18n="metrics.industries">
        Ngành hàng
       </div>
 </div>
@@ -313,7 +318,7 @@
 <div class="m-num" data-count="8">
        0
       </div>
-<div class="m-label">
+<div class="m-label" data-i18n="metrics.solutions">
        Giải pháp dịch vụ
       </div>
 </div>
@@ -323,33 +328,33 @@
 <section class="section alt" id="projects">
 <div class="container">
 <div class="section-head">
-<h2 class="section-title reveal-up">
+<h2 class="section-title reveal-up" data-i18n="projects.title">
       Dự án nổi bật
      </h2>
 <div aria-label="Bộ lọc dự án" class="filters reveal-up" role="tablist">
-<button aria-selected="true" class="chip active" data-filter="all" role="tab">
+<button aria-selected="true" class="chip active" data-filter="all" data-i18n="projects.filter.all" role="tab">
        Tất cả
       </button>
-<button class="chip" data-filter="brand" role="tab">
+<button class="chip" data-filter="brand" data-i18n="projects.filter.brand" role="tab">
        Branding
       </button>
-<button class="chip" data-filter="social" role="tab">
+<button class="chip" data-filter="social" data-i18n="projects.filter.social" role="tab">
        Social
       </button>
-<button class="chip" data-filter="print" role="tab">
+<button class="chip" data-filter="print" data-i18n="projects.filter.print" role="tab">
        Print
       </button>
 </div>
 </div>
 <div class="project-carousel">
-<button aria-label="Dự án trước" class="project-nav" id="projectPrev" type="button">
+<button aria-label="Dự án trước" class="project-nav" data-i18n-attr="aria-label:projects.prev" id="projectPrev" type="button">
       ‹
      </button>
 <div class="grid-3 project-grid">
 <article class="project-card reveal-up" data-cat="social">
 <div class="p-media">
 <img alt="Sun Nha Trang — KV Launch" src="assets/img/placeholder-1.svg"/>
-<a aria-haspopup="dialog" class="p-view" data-case="sun" href="projects/p1.html">
+<a aria-haspopup="dialog" class="p-view" data-case="sun" data-i18n="projects.view" href="projects/p1.html">
          Xem full
         </a>
 </div>
@@ -365,7 +370,7 @@
 <article class="project-card reveal-up" data-cat="brand">
 <div class="p-media">
 <img alt="Blanca City — B6·B7 Identity" src="assets/img/placeholder-2.svg"/>
-<a aria-haspopup="dialog" class="p-view" data-case="blanca" href="projects/p2.html">
+<a aria-haspopup="dialog" class="p-view" data-case="blanca" data-i18n="projects.view" href="projects/p2.html">
          Xem full
         </a>
 </div>
@@ -381,7 +386,7 @@
 <article class="project-card reveal-up" data-cat="print">
 <div class="p-media">
 <img alt="La Tiên Villa — Brochure Wabi‑Sabi" src="assets/img/placeholder-3.svg"/>
-<a aria-haspopup="dialog" class="p-view" data-case="latien" href="projects/p3.html">
+<a aria-haspopup="dialog" class="p-view" data-case="latien" data-i18n="projects.view" href="projects/p3.html">
          Xem full
         </a>
 </div>
@@ -397,7 +402,7 @@
 <article class="project-card reveal-up" data-cat="brand">
 <div class="p-media">
 <img alt="Recruitment — KOL/KOC BĐS" src="assets/img/placeholder-4.svg"/>
-<a aria-haspopup="dialog" class="p-view" data-case="recruitment" href="projects/p4.html">
+<a aria-haspopup="dialog" class="p-view" data-case="recruitment" data-i18n="projects.view" href="projects/p4.html">
          Xem full
         </a>
 </div>
@@ -413,7 +418,7 @@
 <article class="project-card reveal-up" data-cat="social">
 <div class="p-media">
 <img alt="An Khang Media — Social Ads" src="assets/img/placeholder-5.svg"/>
-<a aria-haspopup="dialog" class="p-view" data-case="ankhang" href="projects/p5.html">
+<a aria-haspopup="dialog" class="p-view" data-case="ankhang" data-i18n="projects.view" href="projects/p5.html">
          Xem full
         </a>
 </div>
@@ -429,7 +434,7 @@
 <article class="project-card reveal-up" data-cat="print">
 <div class="p-media">
 <img alt="POSM — Booth &amp; Standee" src="assets/img/placeholder-6.svg"/>
-<a aria-haspopup="dialog" class="p-view" data-case="posm" href="projects/p6.html">
+<a aria-haspopup="dialog" class="p-view" data-case="posm" data-i18n="projects.view" href="projects/p6.html">
          Xem full
         </a>
 </div>
@@ -445,7 +450,7 @@
 <article class="project-card reveal-up" data-cat="social">
 <div class="p-media">
 <img alt="The Park Residence — Launch Assets" src="assets/img/placeholder-1.svg"/>
-<a aria-haspopup="dialog" class="p-view" data-case="park" href="projects/p5.html">
+<a aria-haspopup="dialog" class="p-view" data-case="park" data-i18n="projects.view" href="projects/p5.html">
          Xem full
         </a>
 </div>
@@ -461,7 +466,7 @@
 <article class="project-card reveal-up" data-cat="brand">
 <div class="p-media">
 <img alt="Royal Riverside — Identity System" src="assets/img/placeholder-2.svg"/>
-<a aria-haspopup="dialog" class="p-view" data-case="royal" href="projects/p2.html">
+<a aria-haspopup="dialog" class="p-view" data-case="royal" data-i18n="projects.view" href="projects/p2.html">
          Xem full
         </a>
 </div>
@@ -477,7 +482,7 @@
 <article class="project-card reveal-up" data-cat="print">
 <div class="p-media">
 <img alt="Aurora Garden — Brochure Luxe" src="assets/img/placeholder-3.svg"/>
-<a aria-haspopup="dialog" class="p-view" data-case="aurora" href="projects/p3.html">
+<a aria-haspopup="dialog" class="p-view" data-case="aurora" data-i18n="projects.view" href="projects/p3.html">
          Xem full
         </a>
 </div>
@@ -493,7 +498,7 @@
 <article class="project-card reveal-up" data-cat="social">
 <div class="p-media">
 <img alt="Metro Skyline — Sales Kit" src="assets/img/placeholder-4.svg"/>
-<a aria-haspopup="dialog" class="p-view" data-case="metro" href="projects/p4.html">
+<a aria-haspopup="dialog" class="p-view" data-case="metro" data-i18n="projects.view" href="projects/p4.html">
          Xem full
         </a>
 </div>
@@ -507,7 +512,7 @@
 </div>
 </article>
 </div>
-<button aria-label="Dự án tiếp theo" class="project-nav" id="projectNext" type="button">
+<button aria-label="Dự án tiếp theo" class="project-nav" data-i18n-attr="aria-label:projects.next" id="projectNext" type="button">
       ›
      </button>
 </div>
@@ -515,63 +520,63 @@
 </section>
 <section class="section" id="services">
 <div class="container">
-<h2 class="section-title reveal-up">
+<h2 class="section-title reveal-up" data-i18n="services.title">
      Dịch vụ
     </h2>
 <div class="grid-3">
 <div class="card service reveal-up">
-<h3>
+<h3 data-i18n="services.card1.title">
        Brand Identity
       </h3>
-<p>
+<p data-i18n="services.card1.desc">
        Logo, hệ màu, typography, guideline, stationery, ứng dụng nhận diện.
       </p>
 <ul class="check">
-<li>
+<li data-i18n="services.card1.item1">
         Nghiên cứu &amp; định vị
        </li>
-<li>
+<li data-i18n="services.card1.item2">
         Key visual &amp; ứng dụng
        </li>
-<li>
+<li data-i18n="services.card1.item3">
         Brandbook (PDF)
        </li>
 </ul>
 </div>
 <div class="card service reveal-up">
-<h3>
+<h3 data-i18n="services.card2.title">
        Social &amp; Campaign
       </h3>
-<p>
+<p data-i18n="services.card2.desc">
        KV, bộ banner, video short, landing, kế hoạch nội dung &amp; A/B test.
       </p>
 <ul class="check">
-<li>
+<li data-i18n="services.card2.item1">
         Content &amp; Visual system
        </li>
-<li>
+<li data-i18n="services.card2.item2">
         Media Kit
        </li>
-<li>
+<li data-i18n="services.card2.item3">
         Performance creative
        </li>
 </ul>
 </div>
 <div class="card service reveal-up">
-<h3>
+<h3 data-i18n="services.card3.title">
        Print &amp; POSM
       </h3>
-<p>
+<p data-i18n="services.card3.desc">
        Brochure, flyer, standee, OOH, 2D booth, in ấn và bàn giao file chuẩn.
       </p>
 <ul class="check">
-<li>
+<li data-i18n="services.card3.item1">
         Kỹ thuật in &amp; vật liệu
        </li>
-<li>
+<li data-i18n="services.card3.item2">
         Dàn trang chuyên nghiệp
        </li>
-<li>
+<li data-i18n="services.card3.item3">
         File in chuẩn
        </li>
 </ul>
@@ -581,7 +586,7 @@
 </section>
 <section class="section alt" id="skills">
 <div class="container">
-<h2 class="section-title reveal-up">
+<h2 class="section-title reveal-up" data-i18n="skills.title">
      Kỹ năng
     </h2>
 <div class="skills-grid">
@@ -614,17 +619,17 @@
 </section>
 <section class="section" id="testimonials">
 <div class="container testimonials-layout">
-<div class="testimonials-left">
-<span class="eyebrow soft">
+    <div class="testimonials-left">
+     <span class="eyebrow soft" data-i18n="testimonials.eyebrow">
       Lắng nghe ý kiến
      </span>
-<h2 class="section-title">
+     <h2 class="section-title" data-i18n-html="testimonials.title">
       Khách hàng nói về
       <span class="highlight">
        Minh Thuyết
       </span>
-</h2>
-<p class="section-lead">
+     </h2>
+     <p class="section-lead" data-i18n="testimonials.lead">
       Creative partner được tin tưởng bởi đội ngũ Sales &amp; Marketing tại các dự án BĐS cao cấp.
      </p>
 <div aria-live="polite" aria-roledescription="carousel" class="slider reveal-up" id="slider" role="region">
@@ -638,10 +643,10 @@
           ❝
          </span>
 </div>
-<p>
+<p data-i18n="testimonials.quote1">
          “Thiết kế đẹp và đúng deadline. Chiến dịch social tăng tương tác 3×.”
         </p>
-<span class="testimonial-meta">
+<span class="testimonial-meta" data-i18n="testimonials.meta1">
          Trưởng phòng Marketing, BĐS cao cấp
         </span>
 </article>
@@ -656,10 +661,10 @@
           ❝
          </span>
 </div>
-<p>
+<p data-i18n="testimonials.quote2">
          “Brandbook chi tiết, triển khai đồng bộ rất mượt.”
         </p>
-<span class="testimonial-meta">
+<span class="testimonial-meta" data-i18n="testimonials.meta2">
          CEO Thương hiệu nội thất
         </span>
 </article>
@@ -674,10 +679,10 @@
           ❝
          </span>
 </div>
-<p>
+<p data-i18n="testimonials.quote3">
          “Tư duy hình ảnh hiện đại, phối hợp tốt với team media.”
         </p>
-<span class="testimonial-meta">
+<span class="testimonial-meta" data-i18n="testimonials.meta3">
          Account Director, Agency
         </span>
 </article>
@@ -686,10 +691,10 @@
 <span>
 </span>
 </div>
-<button aria-label="Trước" class="slider-prev" type="button">
+<button aria-label="Trước" class="slider-prev" data-i18n-attr="aria-label:testimonials.prev" type="button">
        ‹
       </button>
-<button aria-label="Sau" class="slider-next" type="button">
+<button aria-label="Sau" class="slider-next" data-i18n-attr="aria-label:testimonials.next" type="button">
        ›
       </button>
 </div>
@@ -703,10 +708,10 @@
 </section>
 <section class="section alt" id="contact">
 <div class="container narrow">
-<h2 class="section-title reveal-up">
+<h2 class="section-title reveal-up" data-i18n="contact.title">
      Liên hệ
     </h2>
-<p class="section-lead reveal-up">
+<p class="section-lead reveal-up" data-i18n="contact.lead">
      Sẵn sàng cho dự án mới? Hãy nói về mục tiêu, ngân sách và timeline của bạn.
     </p>
 <div class="contact-layout">
@@ -714,30 +719,30 @@
 <form action="https://formspree.io/f/mqawkyjj" class="contact-form reveal-up" id="contactForm" method="post">
 <div class="grid-2">
 <label>
-         Họ tên
+         <span data-i18n="contact.form.name">Họ tên</span>
          <input name="name" required="" type="text"/>
 </label>
 <label>
-         Email
+         <span data-i18n="contact.form.email">Email</span>
          <input name="email" required="" type="email"/>
 </label>
 </div>
 <label>
-        Chủ đề
+        <span data-i18n="contact.form.subject">Chủ đề</span>
         <input name="subject" required="" type="text"/>
 </label>
 <label>
-        Tin nhắn
+        <span data-i18n="contact.form.message">Tin nhắn</span>
         <textarea name="message" required="" rows="6"></textarea>
 </label>
 <div class="form-actions">
-<button class="btn" type="submit">
+<button class="btn" data-i18n="contact.form.submit" type="submit">
          Gửi
         </button>
-<button class="btn btn-ghost" id="copyEmail" type="button">
+<button class="btn btn-ghost" data-i18n="contact.form.copy" id="copyEmail" type="button">
          Sao chép email
         </button>
-<button class="btn btn-outline" data-link="https://zalo.me/0912275643" id="zaloContact" type="button">
+<button class="btn btn-outline" data-i18n="contact.form.zalo" data-link="https://zalo.me/0912275643" id="zaloContact" type="button">
          Chat Zalo
         </button>
 </div>
@@ -746,7 +751,7 @@
 </p>
 </div>
 <div class="contact-info-card reveal-up">
-<p class="info-title">
+<p class="info-title" data-i18n="contact.info.title">
        Thông tin liên lạc
       </p>
 <ul class="info-list">
@@ -755,10 +760,10 @@
          📍
         </span>
 <div>
-<p class="info-label">
+<p class="info-label" data-i18n="contact.info.addressLabel">
           Địa chỉ
          </p>
-<p class="info-value">
+<p class="info-value" data-i18n="contact.info.addressValue">
           Thủ Đức - Hồ Chí Minh, Việt Nam
          </p>
 </div>
@@ -768,10 +773,10 @@
          📞
         </span>
 <div>
-<p class="info-label">
+<p class="info-label" data-i18n="contact.info.phoneLabel">
           Điện thoại
          </p>
-<p class="info-value">
+<p class="info-value" data-i18n="contact.info.phoneValue">
           (+84) 0912.275.643
          </p>
 </div>
@@ -781,10 +786,10 @@
          ✉️
         </span>
 <div>
-<p class="info-label">
+<p class="info-label" data-i18n="contact.info.emailLabel">
           Email
          </p>
-<p class="info-value">
+<p class="info-value" data-i18n="contact.info.emailValue">
           Thuyet.nguyenminh03@gmail.com
          </p>
 </div>
@@ -794,6 +799,7 @@
 </div>
 </div>
 </section>
+</main>
 <footer class="footer">
 <div class="container footer-inner">
 <div class="footer-brand">
@@ -801,10 +807,10 @@
 <img alt="Logo Minh Thuyết" src="https://i.postimg.cc/d0VckgRj/logo.png"/>
 </span>
 </div>
-<p>
+<p data-i18n="footer.copy">
      © 2025 Minh Thuyết. All rights reserved.
     </p>
-<a aria-label="Lên đầu trang" class="back-to-top" href="#top">
+<a aria-label="Lên đầu trang" class="back-to-top" data-i18n-attr="aria-label:footer.backToTop" href="#top">
      ↑
     </a>
 </div>
@@ -813,20 +819,20 @@
 <div class="modal-backdrop" data-close="true">
 </div>
 <div aria-modal="true" class="modal-dialog" role="document" tabindex="-1">
-<button aria-label="Đóng" class="modal-close" data-close="true">
+<button aria-label="Đóng" class="modal-close" data-close="true" data-i18n-attr="aria-label:modal.close">
      ✕
     </button>
 <div class="modal-body">
-<h3 id="modalTitle">
+<h3 data-i18n="projects.modal.title" id="modalTitle">
       Case Study
      </h3>
-<p id="modalDesc">
+<p data-i18n="projects.modal.desc" id="modalDesc">
       Mô tả ngắn gọn về mục tiêu, insight, giải pháp và kết quả.
      </p>
 <div class="modal-media">
 <img alt="Chi tiết dự án" id="modalImg" src="assets/img/placeholder-1.svg"/>
 </div>
-<a class="btn" href="#" id="modalBtn">
+<a class="btn" data-i18n="projects.modal.cta" href="#" id="modalBtn">
       Xem chi tiết
      </a>
 </div>
@@ -836,25 +842,25 @@
 <div class="contact-popup-backdrop" data-close="true">
 </div>
 <div class="contact-popup-dialog" role="document">
-<button aria-label="Đóng" class="popup-close" data-close="true">
+<button aria-label="Đóng" class="popup-close" data-close="true" data-i18n-attr="aria-label:modal.close">
      ✕
     </button>
 <div class="popup-body">
-<h3>
+<h3 data-i18n="contact.popup.title">
       Kết nối Zalo
      </h3>
-<p>
+<p data-i18n="contact.popup.desc">
       Quét QR hoặc bấm nút dưới để chat nhanh qua Zalo.
      </p>
 <div class="popup-card">
 <div class="phone-tag">
        0912 275 643
       </div>
-<div class="qr-placeholder">
+<div class="qr-placeholder" data-i18n="contact.popup.qr">
        Zalo QR
       </div>
 </div>
-<a class="btn" href="https://zalo.me/0912275643" rel="noopener" target="_blank">
+<a class="btn" data-i18n="contact.popup.cta" href="https://zalo.me/0912275643" rel="noopener" target="_blank">
       Mở Zalo
      </a>
 </div>

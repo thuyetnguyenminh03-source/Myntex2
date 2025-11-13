@@ -4,23 +4,45 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>POSM — Booth & Standee – Case Study</title>
-<link rel="icon" href="../assets/img/favicon.svg">
+<link rel="icon" href="https://i.postimg.cc/L8r0R7C2/logo-hi-nh.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/style.css" />
 </head>
-<body class="case-page">
-<header class="site-header">
-  <div class="container">
-    <div class="brand">
-      <a aria-label="Trang chủ" href="../index.html">
-        <span class="brand-logo">
-          <img alt="Minh Thuyết" src="https://i.postimg.cc/d0VckgRj/logo.png"/>
-        </span>
-      </a>
-    </div>
-    <nav class="site-nav"></nav>
+<body class="case-page" data-case="posm">
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a aria-label="Trang chủ" class="brand" href="../index.html#hero">
+      <span class="brand-logo">
+        <img alt="Minh Thuyết" src="https://i.postimg.cc/d0VckgRj/logo.png"/>
+      </span>
+    </a>
+    <nav aria-label="Primary" class="nav">
+      <button aria-controls="navMenu" aria-expanded="false" class="nav-toggle" id="navToggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="sr-only">Mở menu</span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a data-i18n="nav.about" href="../index.html#about">Giới thiệu</a></li>
+        <li><a data-i18n="nav.projects" href="../index.html#projects">Dự án</a></li>
+        <li><a data-i18n="nav.services" href="../index.html#services">Dịch vụ</a></li>
+        <li><a data-i18n="nav.skills" href="../index.html#skills">Kỹ năng</a></li>
+        <li><a data-i18n="nav.testimonials" href="../index.html#testimonials">Khách hàng</a></li>
+        <li><a data-i18n="nav.contact" href="../index.html#contact">Liên hệ</a></li>
+        <li>
+          <button aria-label="Đổi chế độ sáng/tối" class="btn btn-ghost small" data-i18n-attr="aria-label:nav.themeToggle" id="themeToggle" type="button">🌓</button>
+        </li>
+        <li>
+          <div aria-label="Language switcher" class="lang-switch" role="group">
+            <button class="lang-btn active" data-lang="vi" type="button">VI</button>
+            <button class="lang-btn" data-lang="en" type="button">EN</button>
+          </div>
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>
 
@@ -28,14 +50,13 @@
   <section class="case-hero reveal-up">
     <div class="container">
       <div>
-        <div class="breadcrumb"><a href="../index.html">Trang chủ</a> / <a href="../index.html#projects">Dự án</a> / <span>POSM — Booth & Standee</span></div>
-        <h1>POSM — Booth & Standee</h1>
+        <h1 data-case-key="title">POSM — Booth & Standee</h1>
         <div class="case-meta">
-          <span>Vai trò: Art Director · Designer</span>
-          <span>Thời gian: 2024–2025</span>
-          <span>Công cụ: AI, PS, ID, Figma</span>
+          <span data-case-key="metaRole">Vai trò: Art Director · Designer</span>
+          <span data-case-key="metaTime">Thời gian: 2024–2025</span>
+          <span data-case-key="metaTools">Công cụ: AI, PS, ID, Figma</span>
         </div>
-        <p style="margin-top:10px">POSM Booth & Standee cho sự kiện: booth, standee, backdrop, wayfinding.</p>
+        <p data-case-key="summary" style="margin-top:10px">POSM Booth & Standee cho sự kiện: booth, standee, backdrop, wayfinding.</p>
       </div>
       <div class="case-cover">
         <img src="../assets/img/placeholder-6.svg" alt="POSM — Booth & Standee cover" />
@@ -45,15 +66,15 @@
 
   <section class="case-section">
     <div class="container">
-      <h2>Mục tiêu & Thách thức</h2>
+      <h2 data-i18n="case.objectivesTitle">Mục tiêu & Thách thức</h2>
       <div class="case-grid">
         <div>
-          <p>Mục tiêu: Tăng nhận biết thương hiệu & thúc đẩy chuyển đổi qua hệ thống visual đồng nhất đa kênh.</p>
-          <p>Thách thức: Deadline gấp, nhiều điểm chạm (POSM, social, landing), phải đảm bảo tính nhất quán và hiệu quả sản xuất.</p>
+          <p data-case-key="objective">Mục tiêu: Tăng nhận biết thương hiệu & thúc đẩy chuyển đổi qua hệ thống visual đồng nhất đa kênh.</p>
+          <p data-case-key="challenge">Thách thức: Deadline gấp, nhiều điểm chạm (POSM, social, landing), phải đảm bảo tính nhất quán và hiệu quả sản xuất.</p>
         </div>
         <div>
-          <p>Chiến lược: Thiết lập lưới bố cục, palette & typographic scale; chuẩn hoá template; tạo asset kit dùng lại được.</p>
-          <p>Workflow: Tư duy Design Thinking — Discover → Define → Develop → Deliver, kiểm thử A/B.</p>
+          <p data-case-key="strategy">Chiến lược: Thiết lập lưới bố cục, palette & typographic scale; chuẩn hoá template; tạo asset kit dùng lại được.</p>
+          <p data-case-key="workflow">Workflow: Tư duy Design Thinking — Discover → Define → Develop → Deliver, kiểm thử A/B.</p>
         </div>
       </div>
     </div>
@@ -61,7 +82,7 @@
 
   <section class="case-section">
     <div class="container">
-      <h2>Hình ảnh triển khai</h2>
+      <h2 data-i18n="case.galleryTitle">Hình ảnh triển khai</h2>
       <div class="case-grid">
         <img src="../assets/img/placeholder-1.svg" alt="mock 1">
         <img src="../assets/img/placeholder-2.svg" alt="mock 2">
@@ -75,19 +96,19 @@
 
   <section class="case-section">
     <div class="container">
-      <h2>Kết quả chính</h2>
+      <h2 data-i18n="case.resultsTitle">Kết quả chính</h2>
       <div class="kpis">
-        <div class="kpi"><div class="num">+45%</div><div>CTR chiến dịch</div></div>
-        <div class="kpi"><div class="num">-30%</div><div>Thời gian sản xuất</div></div>
-        <div class="kpi"><div class="num">+120%</div><div>Reach tự nhiên</div></div>
-        <div class="kpi"><div class="num">98%</div><div>Độ nhất quán brand</div></div>
+        <div class="kpi"><div class="num">+45%</div><div data-i18n="case.kpi1">CTR chiến dịch</div></div>
+        <div class="kpi"><div class="num">-30%</div><div data-i18n="case.kpi2">Thời gian sản xuất</div></div>
+        <div class="kpi"><div class="num">+120%</div><div data-i18n="case.kpi3">Reach tự nhiên</div></div>
+        <div class="kpi"><div class="num">98%</div><div data-i18n="case.kpi4">Độ nhất quán brand</div></div>
       </div>
     </div>
   </section>
 
   <section class="case-section">
     <div class="container back-row">
-      <a class="btn" href="../index.html#projects">← Quay lại danh sách</a>
+      <a class="btn" data-i18n="case.back" href="../index.html#projects">← Quay lại danh sách</a>
       <div class="prev-next">
         <a href="p5.html">← An Khang Media — Social Ads</a>
         
