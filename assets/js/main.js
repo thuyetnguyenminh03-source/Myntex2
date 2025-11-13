@@ -63,6 +63,7 @@ const ensureScrollProgress = () => {
     const height = doc.scrollHeight - doc.clientHeight;
     const value = height > 0 ? (doc.scrollTop / height) * 100 : 0;
     bar.style.setProperty('--progress', `${value}%`);
+    rootEl.style.setProperty('--scroll-progress', (value / 100).toFixed(4));
   };
   let ticking = false;
   document.addEventListener(
@@ -95,6 +96,17 @@ const revealObserver = new IntersectionObserver(
 );
 document.querySelectorAll('.reveal-up').forEach((el) => revealObserver.observe(el));
 
+// Section ambient glow on scroll
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      entry.target.classList.toggle('in-view', entry.isIntersecting);
+    });
+  },
+  { threshold: 0.35 }
+);
+document.querySelectorAll('.section').forEach((section) => sectionObserver.observe(section));
+
 // Counters
 const counters = document.querySelectorAll('.m-num');
 const counterObserver = new IntersectionObserver(
@@ -119,28 +131,36 @@ const counterObserver = new IntersectionObserver(
 counters.forEach((el) => counterObserver.observe(el));
 
 // Hero parallax
-const heroSection = document.getElementById('hero');
 const heroCard = document.querySelector('.hero-art .card');
 const heroCopy = document.querySelector('.hero-copy');
-const heroParallaxEnabled = window.matchMedia('(pointer: fine)').matches;
-if (heroSection && heroCard && heroCopy && heroParallaxEnabled) {
-  const parallax = (event) => {
-    const rect = heroSection.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
-    heroCard.style.setProperty('--hero-card-x', `${x * 16}px`);
-    heroCard.style.setProperty('--hero-card-y', `${y * 12}px`);
-    heroCopy.style.setProperty('--hero-copy-x', `${x * -10}px`);
-    heroCopy.style.setProperty('--hero-copy-y', `${y * -6}px`);
-  };
-  const reset = () => {
-    heroCard.style.setProperty('--hero-card-x', '0px');
-    heroCard.style.setProperty('--hero-card-y', '0px');
-    heroCopy.style.setProperty('--hero-copy-x', '0px');
-    heroCopy.style.setProperty('--hero-copy-y', '0px');
-  };
-  heroSection.addEventListener('pointermove', parallax);
-  heroSection.addEventListener('pointerleave', reset);
+if (heroCard && heroCopy) {
+  heroCard.style.setProperty('--hero-card-x', '0px');
+  heroCard.style.setProperty('--hero-card-y', '0px');
+  heroCopy.style.setProperty('--hero-copy-x', '0px');
+  heroCopy.style.setProperty('--hero-copy-y', '0px');
+}
+
+// Chip glow animation
+const chipRow = document.querySelector('.chip-row');
+if (chipRow) {
+  const chips = [...chipRow.querySelectorAll('.chip')];
+  if (chips.length) {
+    const updateGlow = (index) => {
+      const target = chips[index % chips.length];
+      const glowWidth = target.offsetWidth + 20;
+      chipRow.style.setProperty('--chip-glow-width', `${glowWidth}px`);
+      const offset = target.offsetLeft + (target.offsetWidth - glowWidth) / 2;
+      chipRow.style.setProperty('--chip-glow-offset', `${offset}px`);
+    };
+    let chipIndex = 0;
+    const highlight = () => {
+      updateGlow(chipIndex);
+      chipIndex += 1;
+    };
+    highlight();
+    setInterval(highlight, 2200);
+    window.addEventListener('resize', () => updateGlow(chipIndex));
+  }
 }
 
 const projectCases = {
@@ -195,6 +215,7 @@ const projectCards = projectGrid ? [...projectGrid.querySelectorAll('.project-ca
 const cardsPerPage = 6;
 let activeProjectFilter = 'all';
 let projectPage = 0;
+let projectAutoTimer = null;
 
 filterButtons.forEach((btn) => {
   btn.addEventListener('click', () => {
@@ -203,6 +224,7 @@ filterButtons.forEach((btn) => {
     activeProjectFilter = btn.dataset.filter || 'all';
     projectPage = 0;
     renderProjectPage();
+    startProjectAuto();
   });
 });
 
@@ -229,10 +251,30 @@ const renderProjectPage = () => {
   setTimeout(() => projectGrid.classList.remove('transitioning'), 180);
 };
 
+const stopProjectAuto = () => {
+  if (projectAutoTimer) {
+    clearInterval(projectAutoTimer);
+    projectAutoTimer = null;
+  }
+};
+
+const startProjectAuto = () => {
+  stopProjectAuto();
+  const totalPages = Math.max(1, Math.ceil(getFilteredCards().length / cardsPerPage));
+  if (totalPages <= 1) return;
+  projectAutoTimer = window.setInterval(() => {
+    const pages = Math.max(1, Math.ceil(getFilteredCards().length / cardsPerPage));
+    if (pages <= 1) return;
+    projectPage = (projectPage + 1) % pages;
+    renderProjectPage();
+  }, 6000);
+};
+
 projectPrev?.addEventListener('click', () => {
   if (projectPage === 0) return;
   projectPage -= 1;
   renderProjectPage();
+  startProjectAuto();
 });
 
 projectNext?.addEventListener('click', () => {
@@ -240,9 +282,14 @@ projectNext?.addEventListener('click', () => {
   if (projectPage >= totalPages - 1) return;
   projectPage += 1;
   renderProjectPage();
+  startProjectAuto();
 });
 
 renderProjectPage();
+startProjectAuto();
+
+projectGrid?.addEventListener('mouseenter', stopProjectAuto);
+projectGrid?.addEventListener('mouseleave', startProjectAuto);
 
 if (window.matchMedia('(pointer: fine)').matches) {
   projectCards.forEach((card) => {
@@ -357,6 +404,7 @@ if (sliderEl) {
   if (sliderIndex < 0) sliderIndex = 0;
   let autoTimer = null;
   let pointerStart = null;
+  const isControl = (el) => el?.closest?.('.slider-prev, .slider-next');
 
   const setSlide = (index) => {
     if (!slides.length) return;
@@ -405,13 +453,14 @@ if (sliderEl) {
   });
 
   sliderEl.addEventListener('pointerdown', (event) => {
-    if (slides.length < 2) return;
+    if (slides.length < 2 || isControl(event.target)) return;
     pointerStart = event.clientX;
     sliderEl.setPointerCapture?.(event.pointerId);
     stopAuto();
   });
 
   sliderEl.addEventListener('pointerup', (event) => {
+    if (isControl(event.target)) return;
     if (pointerStart === null) return;
     const delta = event.clientX - pointerStart;
     if (Math.abs(delta) > 40) {
@@ -421,7 +470,8 @@ if (sliderEl) {
     sliderEl.releasePointerCapture?.(event.pointerId);
     startAuto();
   });
-  sliderEl.addEventListener('pointercancel', () => {
+  sliderEl.addEventListener('pointercancel', (event) => {
+    if (isControl(event.target)) return;
     pointerStart = null;
     startAuto();
   });
